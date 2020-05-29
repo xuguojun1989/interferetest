@@ -39,3 +39,12 @@ function generateSignPost(params, bxEvn, partner) {
   str += bxEvn
   return md5(str)
 }
+
+
+
+// 则先对密码作MD5算法获取摘要，并把获取的salt拼接到摘后再次作MD5算法，把摘要作为密码传入，30秒内有效，解密一次后失效
+NSString *salt = [response.AppendData valueForKey:@"Salt"];
+NSString *md5PassWord = [passWord md5String];
+if (salt && ![salt isEqual:[NSNull null]] && salt.length) {
+    md5PassWord = [[md5PassWord stringByAppendingString:salt] md5String];
+}

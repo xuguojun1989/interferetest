@@ -48,12 +48,12 @@ def generateSignGetbx(params, partner="10016", bxEvn="gaosiedu"):
 def generateSignPost(data, partner="10016", bxEvn="gaosiedu"):
     s2 = json.dumps(data)
     print(s2)
-    l1 = s2.split(" ")
-    s3 = ""
-    for item in l1:
-        s3 += item
-    print(s3)
-    str3 = "partner={}&".format(partner) + s3 + bxEvn
+    # l1 = s2.split(" ")
+    # s3 = ""
+    # for item in l1:
+    #     s3 += item
+    # print(s3)
+    str3 = "partner={}&".format(partner) + s2 + bxEvn
     print(str3)
     m1 = hashlib.md5()
     # 使用md5对象里的update方法md5转换
@@ -77,25 +77,17 @@ if __name__ == '__main__':
     # params = {
     #     "name": "18515353986"
     # }
-    # generateSignGetbx(params=params, bxEvn="gaosiedu", partner="10016")
-    # passwd_2 = passwd_md5("000000", "A93B94FC")
-    passwd_2 = passwd_md5("000000", "FEDB0A37")
+    passwd_2 = passwd_md5("000000", "A93B94FC")
+    # passwd_2 = passwd_md5("000000", "FEDB0A37")
 
     #  sign: ab1b2c4462f5c9bcbcc8e0552ce91d4a
     # {\"Phone\":\"18515353986\",\"Password\":\"57267bd7680e4040f984a0607df80345\",\"ClientId\":\"10000\"}
-    # data = {
-    #     "Phone": "18515353986",
-    #     "Password": "57267bd7680e4040f984a0607df80345",
-    #     "ClientId": "10000"
-    # }
-
     data = {
         "Phone": "18515353986",
         "Password": passwd_2,
         "ClientId": "10000"
     }
-
     s = generateSignPost(data=data)
     print(type(s))
-    # f1(
-    #     "partner=10016&{\"Phone\":\"18515353986\",\"Password\":\"57267bd7680e4040f984a0607df80345\",\"ClientId\":\"10000\"}gaosiedu")
+    f1(
+        "partner=10016&{\"Phone\":\"18515353986\",\"Password\":\"57267bd7680e4040f984a0607df80345\",\"ClientId\":\"10000\"}gaosiedu")

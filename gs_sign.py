@@ -79,7 +79,7 @@ if __name__ == '__main__':
     # }
     # generateSignGetbx(params=params, bxEvn="gaosiedu", partner="10016")
     # passwd_2 = passwd_md5("000000", "A93B94FC")
-    passwd_2 = passwd_md5("000000", "6A7983F0")
+    passwd_2 = passwd_md5("000000", "FEDB0A37")
 
     #  sign: ab1b2c4462f5c9bcbcc8e0552ce91d4a
     # {\"Phone\":\"18515353986\",\"Password\":\"57267bd7680e4040f984a0607df80345\",\"ClientId\":\"10000\"}
@@ -90,7 +90,7 @@ if __name__ == '__main__':
     # }
 
     data = {
-        "Phone": "13387836887",
+        "Phone": "18515353986",
         "Password": passwd_2,
         "ClientId": "10000"
     }

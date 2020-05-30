@@ -48,11 +48,6 @@ def generateSignGetbx(params, partner="10016", bxEvn="gaosiedu"):
 def generateSignPost(data, partner="10016", bxEvn="gaosiedu"):
     s2 = json.dumps(data)
     print(s2)
-    # l1 = s2.split(" ")
-    # s3 = ""
-    # for item in l1:
-    #     s3 += item
-    # print(s3)
     str3 = "partner={}&".format(partner) + s2 + bxEvn
     print(str3)
     m1 = hashlib.md5()

@@ -2,6 +2,7 @@
 
 import json
 import os
+import constants
 
 data = {
     "Phone": "18515353986",
@@ -20,3 +21,5 @@ for item in l1:
     s3 += item
 print(s3)
 print(s3 == s1)
+
+print(constants.UToken)

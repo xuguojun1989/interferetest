@@ -25,11 +25,11 @@ def get_salt(name):
     }
 
     res = requests.get(url=url, params=params, headers=headers)
-    print(res.status_code)
-    print(better_print(res.content))
+    # print(res.status_code)
+    # print(better_print(res.content))
     if res.status_code == 200:
         salt = res.json().get('AppendData').get('Salt')
-        print(salt)
+        # print(salt)
         return salt
     else:
         print(error_print(res.content))

@@ -4,7 +4,7 @@ import os
 
 import requests
 
-from api1_Salt import get_salt
+from api1_nt_reg_Salt import get_salt
 from gs_sign import passwd_md5, generateSignPost
 from utils.tools_print import better_print
 
@@ -33,7 +33,7 @@ def login_by_passwd(phone, password, client="10000"):
     # print(headers)
     res = requests.post(url=url, json=data, headers=headers)
     print(res.status_code)
-    # print(better_print(res.content))
+    print(better_print(res.content))
     res_dic = res.json()
     # print(type(res_dic))
     # 在constants文件中写入UToken，PRefreshToken,PToken
@@ -42,17 +42,22 @@ def login_by_passwd(phone, password, client="10000"):
     for stu in stu_list:
         if stu.get('Phone') == phone:
             utoken = stu.get('LoginToken')
+            studentCode = stu.get('Code')
             with open(path, 'w', encoding='utf-8') as f1:
                 f1.write('UToken="{}"\n'.format(utoken))
                 f1.close()
             print('UToken写入constants.py')
+            with open(path, 'a', encoding='utf-8') as f1:
+                f1.write('StudentCode="{}"\n'.format(studentCode))
+                f1.close()
+            print('StudentCode写入constants.py')
     prefreshtoken = res_dic.get('AppendData').get('PRefreshToken')
     ptoken = res_dic.get('AppendData').get('PToken')
     with open(path, 'a', encoding='utf-8') as f1:
         f1.write('PRefreshToken="{}"\n'.format(prefreshtoken))
         f1.write('PToken="{}"\n'.format(ptoken))
         f1.close()
-    print('PRefreshToken,PToken写入constants.py')
+    print('PRefreshToken,PToken,StudentCode写入constants.py')
 
 
 if __name__ == '__main__':
